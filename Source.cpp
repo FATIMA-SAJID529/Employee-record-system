@@ -12,27 +12,27 @@ private:
 	static int employee_count;
 public:
 	//parameterized constructor and constructor intializer list to initialize company_name
-	Employee(const string name, int id, double salary) :company_name("TechSolutions") {
+	Employee(string name, int id, double salary) :company_name("TechSolutions") {
 		//this pointer to resolve the naming conflict
 		this->name = new string(name);
 		this->id = new int(id);
 		this->salary = new double(salary);
 		employee_count++;
 	}
-	//deep copy constructor
+	/*deep copy constructor
 	Employee(const Employee& emp) : company_name(emp.company_name) {
 		name = new string(*(emp.name));
 		id = new int(*(emp.id));
 		salary = new double(*(emp.salary));
 		employee_count++;
-	}
-	/*shallow copy constructor(commented out to avoid confusion)
+	}*/
+	//shallow copy constructor(commented out to avoid confusion)
 	Employee(const Employee& emp) : company_name(emp.company_name) {
 		name = emp.name;
 		id = emp.id;
 		salary = emp.salary;
 		employee_count++;
-	}*/
+	}
 	//constant member function to display employee details
 	void display()const {
 		cout << "The Employee name is:" << *name << endl;
