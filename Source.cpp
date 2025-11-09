@@ -11,13 +11,6 @@ private:
 	const string company_name;
 	static int employee_count;
 public:
-	//default constructor
-	Employee() :company_name("TechSolutions") {
-		name = new string("Unknown");
-		id = new int(0);
-		salary = new double(0.0);
-		employee_count++;
-	}
 	//parameterized constructor and constructor intializer list to initialize company_name
 	Employee(const string name, int id, double salary) :company_name("TechSolutions") {
 		//this pointer to resolve the naming conflict
