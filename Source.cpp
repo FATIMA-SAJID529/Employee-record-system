@@ -12,7 +12,7 @@ private:
 	static int employee_count;
 public:
 	//default constructor
-	Employee() {
+	Employee() :company_name("TechSolutions") {
 		name = new string("Unknown");
 		id = new int(0);
 		salary = new double(0.0);
@@ -52,8 +52,8 @@ public:
 	static void displayCount() {
 		cout << "The Total Employees in the company are: " << employee_count << endl;
 	}
-	//returning an object from a member function
-	Employee createEmployee() {
+	//returning an object from a member function making it static so it can be called without an object
+	static Employee createEmployee() {
 		Employee e1("fatima", 102, 45000);
 		return e1;
 	}
@@ -79,20 +79,17 @@ int main() {
 	cout << "The Employee details are:" << endl;
 	cout << endl;
 	//creating object by returning object function
-	Employee e1;
-	Employee e0=e1.createEmployee();
-	e0.display();
-	e0.updateSalary(e0, 5000);
+	Employee e1=Employee::createEmployee();
+	e1.display();
+	e1.updateSalary(e1, 5000);
 	cout << endl;
 	//creating object using parameterized constructor
 	Employee e2("Ali", 101, 60000);
 	e2.display();
-	e2.updateSalary(e2, 6000);
 	cout << endl;
 	//creating object using copy constructor
 	Employee e3 = e2;
 	e3.display();
-	e3.updateSalary(e3, 7000);
 	cout << endl;
 	//creating object using dynamic memory allocation
 	Employee* e4 = new Employee("Sara", 103, 70000);
@@ -103,6 +100,7 @@ int main() {
 	e2.setID(202);
 	e2.display();
 	//after modifying e2's id
+	//there is no change in e3's id proving deep copy
 	cout << "After modifying e2's id:" << endl;
 	e3.display();
 	Employee::displayCount();
